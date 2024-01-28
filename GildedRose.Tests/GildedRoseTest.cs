@@ -5,11 +5,12 @@ public class Tests
     [Test]
     public void NormalItemBeforeExpireDate()
     {
-        Item[] items = new Item[] { new Item { Name = "foo", SellIn = 10, Quality = 12 } };
-        GildedRose app = new GildedRose (items);
+        GildedRose app = new GildedRose (new Item[] {
+            new Item { Name = "foo", SellIn = 10, Quality = 12 }
+        });
 
         app.UpdateQuality();
-        Item foo = items[0];
+        Item foo = app.Items[0];
 
         AssertItem(foo, new() { Name = "foo", SellIn = 9, Quality = 11 });
     }
